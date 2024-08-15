@@ -1,0 +1,72 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    font-family: 'Lato', sans-serif;
+    color: #C8C8C8;
+}
+header {
+
+    color: black;
+    padding: 10px 0;
+    text-align: right;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 100%), url('resources/pexels-luis-gomes-166706-546819.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav {
+    margin-top: 10px;
+    width: 100%;
+    text-align: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.Picture{
+    width: 100%;
+}
+.Picture img{
+    width: 500px;
+}
+.UnderMenu {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    color: #fff;
+}
+
+.Picture img {
+    width: 350px;
+    height: auto;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.7);
+}
