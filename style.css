@@ -1,20 +1,39 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Lato', sans-serif;
     color: #C8C8C8;
 }
-header {
 
+header {
     color: black;
-    padding: 10px 0;
-    text-align: right;
     width: 100%;
     background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 100%), url('resources/pexels-luis-gomes-166706-546819.jpg');
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    min-height: 350px;
+    max-height: 750px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    min-height: 350px;
+    max-height: 750px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 header h1 {
@@ -23,50 +42,127 @@ header h1 {
 }
 
 nav {
-    margin-top: 10px;
-    width: 100%;
-    text-align: right;
+    margin: 0px;
+    padding: 0px;
 }
 
-nav ul {
+.HeaderMenu {
     list-style-type: none;
-    margin: 0;
-    width: 100%;
     padding: 0;
     display: flex;
-    justify-content: flex-end;;
+    justify-content: flex-end;
+    width: 100%; /* HeaderMenu occupies 50% width */
 }
 
-nav ul li {
+.HeaderMenu li {
     margin: 0 15px;
 }
 
-nav ul li a {
+.HeaderMenu li a {
     color: black;
     text-decoration: none;
     font-size: 18px;
 }
 
-nav ul li a:hover {
+.HeaderMenu li a:hover {
     text-decoration: underline;
 }
-
-.Picture{
-    width: 100%;
+.Right{
+    width: 50%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align elements to the start of the column */
+    align-items: flex-start
 }
-.Picture img{
-    width: 500px;
+.Right > *:first-child {
+    align-self: flex-end; /* Align the first child to the right */
+    margin-right: 5%;
+    padding-top: 10px;
 }
 .UnderMenu {
     display: flex;
     align-items: center;
     padding: 40px;
-    color: #fff;
+    justify-content: space-between; /* Aligns .Picture to the left and .MenuText to the right */
 }
 
+.Picture {
+    flex: 0 0 auto; /* Prevents the flex item from shrinking or growing */
+    width: 300px; /* Fixed width for the container */
+    height: 300px; /* Same height as width to ensure a square shape */
+    margin: 0 auto; /* Center the picture container */
+    overflow: hidden; /* Hide overflow to maintain circular shape */
+    display: flex; /* Flexbox to center the image */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+}
+.Menu{
+    width: 50%;
+}
 .Picture img {
-    width: 350px;
-    height: auto;
-    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.7);
+    width: 100%; /* Make sure the image fills the container */
+    height: 100%; /* Ensure the height also fills the container */
+    border-radius: 50%; /* Make the image circular */
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.7); /* Optional shadow for effect */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    transform: scale(1); /* Set scale to 1 for proper fitting */
+    transform-origin: center;
+}
+
+.MenuText {
+    flex: 1; /* Ensures .MenuText takes up all available space to the right */
+    text-align: right; /* Aligns text to the right */
+    color: #fff;
+    height: 500px;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: fixed; /* Make the button fixed in the viewport */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+/* Responsive menu styles */
+@media (max-width: 1024px) {
+    .Menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease-in-out; /* Smooth slide transition */
+        z-index: 999; /* Ensure it's below the button */
+        opacity: 0; /* Initially invisible */
+    }
+
+    .Menu.show {
+        transform: translateX(0); /* Slide in from the right */
+        opacity: 1; /* Fade in */
+    }
+
+    .HeaderMenu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .HeaderMenu li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show the toggle button on smaller screens */
+    }
 }
