@@ -3,19 +3,18 @@
     margin: 0;
     box-sizing: border-box;
     text-align: center;
+    
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Coolvetica', sans-serif;
+    font-weight: bold;
     color: #C8C8C8;
 }
 
 header {
     color: black;
     width: 100%;
-    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 100%), url('resources/pexels-luis-gomes-166706-546819.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-content: center;
     justify-content: flex-start;
@@ -24,8 +23,42 @@ header {
     max-height: 750px;
     flex-direction: row;
     flex-wrap: wrap;
-    
+    position: relative; /* Ensure the header is positioned relative to allow absolute positioning inside */
 }
+header::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: url(resources/pexels-luis-gomes-166706-546819.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* Rozmywa tło */
+    z-index: -1; /* Upewnia się, że tło jest za zawartością */
+}
+
+.Picture {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%; /* Ensure Picture container takes the full height of the header */
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Picture img {
+    width: auto;
+    height: 100%; /* Ensure image takes the full height of the container */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    border-radius: 0; /* Remove the border-radius for full coverage */
+    clip-path: none; /* Ensure the image is fully shown without clipping */
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.7); /* Optional shadow for effect */
+}
+
 
 .container{
     width: 100%;
@@ -50,6 +83,7 @@ nav {
 }
 
 .HeaderMenu {
+    margin-top: 20px;
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -62,12 +96,15 @@ nav {
 }
 
 .HeaderMenu li a {
-    color: black;
+    color: #C8C8C8;    
     text-decoration: none;
     font-size: 18px;
 }
+.HeaderMenu li:first-child a{
+    color: #D08DF0;
+}
 
-.HeaderMenu li a:hover {
+.HeaderMenu ul a:hover {
     text-decoration: underline;
 }
 .Right{
@@ -99,9 +136,6 @@ nav {
     justify-content: center; /* Center the image horizontally */
     align-items: center; /* Center the image vertically */
 }
-.Menu{
-    width: 50%;
-}
 .Picture img {
     width: 55%; /* Ensure the image fills the container */
     clip-path: polygon(60% 0%, 85% 0%, 100% 40%,40% 100%, 0% 80%,0% 60%);
@@ -110,11 +144,29 @@ nav {
 
 
 .MenuText {
-    flex: 1; /* Ensures .MenuText takes up all available space to the right */
-    text-align: right; /* Aligns text to the right */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Wyśrodkowanie pionowe */
+    align-items: center; /* Wyśrodkowanie poziome */
     color: #fff;
-    height: 500px;
+    height: 500px; /* Wysokość kontenera */
+    text-align: center; /* Opcjonalnie: tekst wyśrodkowany w każdym elemencie */
 }
+.MenuText h2{
+    padding: 0px;
+}
+.MenuText h2:first-child{
+    margin-right: 65%;
+    color: #C8C8C8;
+}
+.MenuText h2{
+color: #D08DF0;
+}
+.MenuText p {
+    margin-top: 20px;
+    margin-right: 35px;
+}
+
 
 .menu-toggle {
     display: none; /* Hidden by default on larger screens */
@@ -126,11 +178,11 @@ nav {
     position: fixed; /* Make the button fixed in the viewport */
     top: 20px;
     right: 20px;
-    z-index: 1; /* Ensure it stays on top of other elements */
+    z-index: 1001; /* Ensure it stays on top of other elements */
 }
 main{
     width: 100%;
-    background-color: #212529;
+    background: linear-gradient(45deg,#212529,#32373c);
 }
 h2{
     padding-top: 120px;
@@ -144,14 +196,27 @@ h2{
     align-items: center;
     flex-direction: row;
 }
-.Project{
+.PortfolioBackground{
+    background: linear-gradient(60deg, rgba(33,37,41,0.7) 0%, rgba(33,37,41,0.7) 100%), url('resources/7cbb36a34afe45944dc1280aed5f9c0c.png');    background-size: cover; /* Dopasowanie obrazu do kontenera */
+    
+    background-position: center; /* Wyśrodkowanie obrazu */
+        width: 100%; /* Pełna szerokość */
+}
+#pink{
+    color: #D08DF0;
+}
+.Project {
     margin-top: 40px;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 120px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.7);
+    border-radius: 40px; /* Dodanie zaokrąglonych narożników */
+    overflow: hidden; /* Ukrycie zawartości wychodzącej poza zaokrąglone narożniki */
 }
+
 .ProjectPicture{
     width: 100%;
     margin: 0;
@@ -172,7 +237,7 @@ h2{
 .ProjectDescription{
     width: 100%;
     
-    background-color: red;
+    background-color:   #172A3A;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -182,18 +247,178 @@ h2{
 .ProjectDescription a{
     margin: 10px;
 }
-.AboutMe{
+.AboutMeSection{
+  background-color: #292b43;
+}
+.AboutMe {
     width: 100%;
-    background-color: #212529;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
+.DescriptionAboutMe {
+    display: flex;
+    flex-direction: column; /* Zmiana z kolumny na wiersz */
+    justify-content: space-between; /* Rozłożenie elementów po bokach */
+    align-items: center;
+    height: 100%;
+    width: 60%;
+    flex-grow: 1;
+}
+
+.FirstNote, .SecondNote {
+    width: 48%; /* Zmniejszenie szerokości, aby zapewnić margines między nimi */
+}
+.FirstNote{
+    margin-top: 30px;
+    margin-right: 20%;
+}
+.SecondNote{
+    margin-top: 40px;
+    margin-left: 20%;
+    margin-bottom: 30px;
+}
+.PictureAboutMe {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.PictureAboutMe img {
+    margin: 30px;
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%; /* Przekształca obraz w okrąg */
+    object-fit: cover; /* Upewnia się, że obraz wypełnia okrąg bez zniekształceń */
+}
+.ContactMe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Użyj space-around do rozmieszczenia elementów */
+    align-items: center;
+    width: 100%; /* Zajmuje całą szerokość kontenera */
+    padding: 20px 0;
+}
+
+/* Stylizacja całej sekcji kontaktowej */
+#contact {
+    width: 45%; /* Formularz zajmuje 45% szerokości */
+    max-width: 600px;
+    margin: 0; /* Usuń automatyczne marginesy */
+    padding: 20px;
+    color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    
+}
+
+/* Stylizacja grupy formularza */
+.custom-form {
+    background-color: #333; /* Dark background for the form */
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto; /* Center the form horizontally */
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.custom-form input,
+.custom-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #777;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+}
+
+.custom-form input::placeholder,
+.custom-form textarea::placeholder {
+    color: #777;
+}
+
+.custom-form .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.custom-form .form-buttons button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #FF007B; /* Pink color for buttons */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.custom-form .form-buttons button.cancel {
+    color: #FF007B; /* Pink color for Cancel button */
+}
+
+.custom-form .form-buttons button.send {
+    color: #FF007B; /* Pink color for Send button */
+}
+
+.custom-form .form-buttons button:hover {
+    text-decoration: underline;
+}
+
+
+/* Stylizacja elementu info */
+.info {
+    width: 55%; /* Info zajmuje 45% szerokości */
+    text-align: center;
+    color: #212529;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 10px; /* Dodane zaokrąglenie krawędzi */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Dodany cień */
+}
+footer{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer p {
+    margin: 10px;
+}
+/* Stylizacja responsywna dla mniejszych ekranów */
+@media (max-width: 600px) {
+    #contact {
+        padding: 15px;
+    }
+}
+
+
+
+
 /* Responsive menu styles */
 @media (max-width: 1024px) {
     .container{
         flex-direction: column;
         align-items: center;
+        justify-content: center; /* Centruje elementy w osi pionowej */
+        width: 100%;
+        max-height: 1000px;
     }
     .Menu {
         position: fixed;
