@@ -248,7 +248,10 @@ h2{
     margin: 10px;
 }
 .AboutMeSection{
-  background-color: #292b43;
+  background-color: #282a41;
+}
+.AboutMeSection h2{
+   padding-top: 100px; 
 }
 .AboutMe {
     width: 100%;
@@ -288,8 +291,9 @@ h2{
 }
 
 .PictureAboutMe img {
+    padding-bottom: 30px;
     margin: 30px;
-    width: 60%;
+    width: 80%;
     display: block;
     margin: 0 auto;
     border-radius: 50%; /* Przekształca obraz w okrąg */
@@ -312,26 +316,33 @@ h2{
     padding: 20px;
     color: #212529;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 #contact h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 34px;
+    padding-top: 50px;
+    color: #C8C8C8;
     
 }
+#contact h2 a:last-child{
+    color:#D08DF0;
+}
+
 
 /* Stylizacja grupy formularza */
 .custom-form {
     background-color: #333; /* Dark background for the form */
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     max-width: 400px;
     width: 100%;
     margin: 0 auto; /* Center the form horizontally */
     font-family: Arial, sans-serif;
     color: #fff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
 .custom-form input,
@@ -340,8 +351,8 @@ h2{
     background: transparent;
     border: none;
     border-bottom: 1px solid #777;
-    padding: 10px 0;
-    margin-bottom: 20px;
+    padding: 20px 0;
+    margin-bottom: 40px;
     font-size: 16px;
     color: #fff;
     outline: none;
@@ -351,7 +362,9 @@ h2{
 .custom-form textarea::placeholder {
     color: #777;
 }
-
+.custom-form textarea{
+    height: 100px;
+}
 .custom-form .form-buttons {
     display: flex;
     justify-content: flex-end;
@@ -363,17 +376,17 @@ h2{
     border: none;
     font-size: 16px;
     cursor: pointer;
-    color: #FF007B; /* Pink color for buttons */
+    color: #D08DF0; /* Pink color for buttons */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .custom-form .form-buttons button.cancel {
-    color: #FF007B; /* Pink color for Cancel button */
+    color: #D08DF0; /* Pink color for Cancel button */
 }
 
 .custom-form .form-buttons button.send {
-    color: #FF007B; /* Pink color for Send button */
+    color: #D08DF0; /* Pink color for Send button */
 }
 
 .custom-form .form-buttons button:hover {
@@ -385,7 +398,7 @@ h2{
 .info {
     width: 55%; /* Info zajmuje 45% szerokości */
     text-align: center;
-    color: #212529;
+    color: #C8C8C8;
     font-size: 18px;
     padding: 20px;
     border-radius: 10px; /* Dodane zaokrąglenie krawędzi */
@@ -397,19 +410,12 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #292b43;
 }
+
 footer p {
     margin: 10px;
 }
-/* Stylizacja responsywna dla mniejszych ekranów */
-@media (max-width: 600px) {
-    #contact {
-        padding: 15px;
-    }
-}
-
-
-
 
 /* Responsive menu styles */
 @media (max-width: 1024px) {
@@ -468,5 +474,16 @@ footer p {
     .Portfolio{
         flex-direction: column;
         
+    }
+    .ContactMe{
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+    }
+    .info {
+        order: 1; /* Move the info section to the top */
+    }
+
+    #contact {
+        order: 2; /* Move the contact form below the info */
     }
 }
